@@ -89,7 +89,7 @@ const styles = {
     minHeight: "100vh",
     backgroundColor: "black",
     backgroundImage:
-      "url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b')",
+      "url('/assets/background.jpg')",
     backgroundSize: "cover",
     backgroundPosition: "center",
     color: "white",
