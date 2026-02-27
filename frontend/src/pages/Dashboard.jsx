@@ -1,49 +1,55 @@
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Dashboard() {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/");
-  };
+  const [stats] = useState({
+    totalEmails: 128,
+    jobEmails: 34,
+    resumeMatches: 5,
+    highPriority: 12,
+  });
 
   return (
     <div style={styles.container}>
-      <h1>Dashboard</h1>
+      <h2>AI Dashboard</h2>
 
-      <button style={styles.button}>Upload Resume</button>
-      <button style={styles.button}>Email Segregation</button>
+      <div style={styles.grid}>
+        <Card title="Total Emails" value={stats.totalEmails} />
+        <Card title="Job Related Emails" value={stats.jobEmails} />
+        <Card title="Resume Matches" value={stats.resumeMatches} />
+        <Card title="High Priority" value={stats.highPriority} />
+      </div>
+    </div>
+  );
+}
 
-      <button style={styles.logout} onClick={handleLogout}>
-        Logout
-      </button>
+function Card({ title, value }) {
+  return (
+    <div style={styles.card}>
+      <h4>{title}</h4>
+      <p style={styles.value}>{value}</p>
     </div>
   );
 }
 
 const styles = {
   container: {
-    minHeight: "100vh",
-    backgroundColor: "black",
-    color: "white",
-    padding: "40px",
+    padding: "20px",
   },
-  button: {
-    display: "block",
-    margin: "20px 0",
-    padding: "10px 20px",
-    backgroundColor: "#00ffcc",
-    border: "none",
-    cursor: "pointer",
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+    gap: "20px",
+    marginTop: "20px",
   },
-  logout: {
-    marginTop: "40px",
-    padding: "10px 20px",
-    backgroundColor: "red",
-    border: "none",
-    cursor: "pointer",
-    color: "white",
+  card: {
+    background: "#121212",
+    border: "1px solid #00ffcc33",
+    padding: "20px",
+    borderRadius: "12px",
+  },
+  value: {
+    fontSize: "28px",
+    color: "#00ffcc",
   },
 };
 

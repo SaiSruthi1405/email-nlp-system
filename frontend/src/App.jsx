@@ -2,8 +2,11 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Dashboard from "./pages/Dashboard";
+import MailSegregation from "./pages/MailSegregation";
+import ResumeUpload from "./pages/ResumeUpload";
+
 
 function App() {
   return (
